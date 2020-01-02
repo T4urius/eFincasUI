@@ -1,0 +1,15 @@
+<h1>Teste Conta</h1>
+
+<div>
+    <table *ngFor="let conta of allContas">
+        <tr>
+            <td>Descrição: </td> {{conta.descricao}}
+        </tr>
+        <tr>
+            <td>Valor: </td> R$ {{conta.valor | number:'2.2'}}
+        </tr>
+        <tr>
+            <td>Data: </td> {{conta.dataCriacao | date:'longDate'}}
+        </tr>
+    </table>
+</div>
