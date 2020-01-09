@@ -12,6 +12,8 @@ import { DatePipe } from '@angular/common';
 export class ContaPageComponent implements OnInit {
 
   @ViewChild("iconFilter", { read: null, static: true }) iconFilter: ElementRef;
+  @ViewChild("btnRegistro", { read: null, static: true }) btnRegistro: ElementRef;
+  @ViewChild("btnAtualizar", { read: null, static: true }) btnAtualizar: ElementRef;
 
   allContas: Conta[] = [];
   contaForm: FormGroup;
@@ -23,6 +25,8 @@ export class ContaPageComponent implements OnInit {
   constructor(private contaService: ContaService, private formBuilder: FormBuilder, private datePipe: DatePipe) { }
 
   ngOnInit() {
+    this.btnAtualizar.nativeElement.disabled = true;
+
     this.contaForm = this.formBuilder.group({
       id: [],
       descricao: [],
@@ -43,6 +47,8 @@ export class ContaPageComponent implements OnInit {
   }
 
   getValuesToEdit(contaEdit: any) {
+    this.btnAtualizar.nativeElement.disabled = false;
+    this.btnRegistro.nativeElement.disabled = true;
     let dtCria = this.datePipe.transform(contaEdit.dataCriacao, 'yyyy-MM-dd');
 
     this.contaForm.setValue({
@@ -55,6 +61,8 @@ export class ContaPageComponent implements OnInit {
   }
 
   editConta() {
+    this.btnAtualizar.nativeElement.disabled = true;
+    this.btnRegistro.nativeElement.disabled = false;
     let editValues = this.contaForm.value;
     this.contaService.atualizarConta(editValues).subscribe(e => {
       console.log(e);
