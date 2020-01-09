@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Conta } from '../conta';
 import { ContaService } from '../conta.service';
-import { FormGroup, FormBuilder, FormControl, ControlValueAccessor } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -29,9 +29,9 @@ export class ContaPageComponent implements OnInit {
 
     this.contaForm = this.formBuilder.group({
       id: [],
-      descricao: [],
-      valor: [],
-      dataCriacao: Date,
+      descricao: ['', [Validators.required]],
+      valor: ['', [Validators.required]],
+      dataCriacao: ['', Validators.required],
       filter: []
     });
     this.loadAllContas();
@@ -94,14 +94,11 @@ export class ContaPageComponent implements OnInit {
 
   registerConta() {
     let conta = this.contaForm.value;
-
-    if (conta.descricao != null || conta.valor != null || conta.dataCriacao != null) {
-      this.contaService.registrarConta(conta).subscribe(e => {
-        console.log(e);
-        this.ngOnInit();
-      }, (err: any) => {
-        console.log(err);
-      })
-    }
+    this.contaService.registrarConta(conta).subscribe(e => {
+      console.log(e);
+      this.ngOnInit();
+    }, (err: any) => {
+      console.log(err);
+    })
   }
 }
