@@ -64,6 +64,7 @@ export class ContaPageComponent implements OnInit {
     this.btnAtualizar.nativeElement.disabled = true;
     this.btnRegistro.nativeElement.disabled = false;
     let editValues = this.contaForm.value;
+
     this.contaService.atualizarConta(editValues).subscribe(e => {
       console.log(e);
       this.ngOnInit();
@@ -94,12 +95,13 @@ export class ContaPageComponent implements OnInit {
   registerConta() {
     let conta = this.contaForm.value;
 
-    this.contaService.registrarConta(conta).subscribe(e => {
-      console.log(e);
-      this.ngOnInit();
-    }, (err: any) => {
-      console.log(err);
-    })
-
+    if (conta.descricao != null || conta.valor != null || conta.dataCriacao != null) {
+      this.contaService.registrarConta(conta).subscribe(e => {
+        console.log(e);
+        this.ngOnInit();
+      }, (err: any) => {
+        console.log(err);
+      })
+    }
   }
 }
