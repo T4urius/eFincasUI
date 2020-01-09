@@ -1,15 +1,48 @@
 <h1>Teste Conta</h1>
 
 <div>
-    <table *ngFor="let conta of allContas">
-        <tr>
-            <td>Descrição: </td> {{conta.descricao}}
+    <table style="width: 100%;">
+        <tr
+            style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid; border-radius: 10px;">
+            <td style="width: 33%; text-align: center;">Descrição </td>
+            <td style="width: 33%; text-align: center;">Valor </td>
+            <td style="width: 33%; text-align: center;">Data </td>
+
+            <i #iconFilter [ngClass]="['material-icons', 'clsImage']" (click)="filterList()">filter_list</i>
         </tr>
-        <tr>
-            <td>Valor: </td> R$ {{conta.valor | number:'2.2'}}
-        </tr>
-        <tr>
-            <td>Data: </td> {{conta.dataCriacao | date:'longDate'}}
+        <br>
+        <tr *ngFor="let conta of allContas"
+            style="display: flex; justify-content: space-between; padding: 10px; border-top: 1px solid; border-bottom: 1px solid; border-radius: 10px;">
+            <td style="visibility: hidden;">{{conta.id}}</td>
+            <td style="width: 33%; text-align: center;">{{conta.descricao}}</td>
+            <td style="width: 33%; text-align: center;"> {{conta.valor | number:'2.2'}}</td>
+            <td style="width: 33%; text-align: center;">{{conta.dataCriacao | date:'longDate'}}</td>
+            <i [ngClass]="['material-icons', 'clsImage']" (click)="deleteConta(conta.id)">
+                delete
+            </i>
+            <i [ngClass]="['material-icons', 'clsImage']" (click)="getValuesToEdit(conta)">
+                edit
+            </i>
         </tr>
     </table>
 </div>
+<br>
+<form [formGroup]=" contaForm">
+    <div style="display: flex; justify-content: space-between;">
+        <br>
+        <label style="align-self: center;">Descr: </label>
+        <input type="text" name="descricao" formControlName="descricao" />
+        <br>
+        <br>
+        <label style="align-self: center;">Valor: </label>
+        <input type="number" name="valor" formControlName="valor" />
+        <br>
+        <br>
+        <label style="align-self: center;">Data: </label>
+        <input type="date" name="dataCriacao" formControlName="dataCriacao" />
+        <br>
+        <br>
+        <button type="submit" (click)="registerConta()">Registrar conta</button>
+        <button type="submit" (click)="editConta()">Atualizar conta</button>
+    </div>
+</form>

@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { ContaPageComponent } from './conta/conta-page/conta-page.component';
 import { ContaPageModule } from './conta/conta-page/conta-page.module';
 import { HttpClientModule } from '@angular/common/http';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, DatePipe } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -16,13 +18,17 @@ registerLocaleData(localePt);
     ContaPageComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ContaPageModule,
+    BrowserAnimationsModule,
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: "pt-BR" }
+    { provide: LOCALE_ID, useValue: "pt-BR" },
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

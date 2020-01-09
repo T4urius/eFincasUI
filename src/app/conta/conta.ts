@@ -1,5 +1,5 @@
 export class Conta {
-    IdConta: string;
+    Id: number;
     Descricao: string;
     Valor: string;
     DataCriacao: Date;
