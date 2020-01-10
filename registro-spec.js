@@ -17,11 +17,5 @@ describe('Conta Angular 7', function () {
         expect(element(by.id('inputDataCriacao')).getAttribute('value')).toBe("2020-02-20");
 
         element(by.id("btnRegistro")).click();
-        
-
-        //   // You wrote your first test, cross it off the list
-        //   todoList.get(2).element(by.css('input')).click();
-        //   var completedAmount = element.all(by.css('.done-true'));
-        //   expect(completedAmount.count()).toEqual(2);
     });
 });

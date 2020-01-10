@@ -17,10 +17,10 @@
             <td style="width: 33%; text-align: center;">{{conta.descricao}}</td>
             <td style="width: 33%; text-align: center;"> {{conta.valor | number:'2.2'}}</td>
             <td style="width: 33%; text-align: center;">{{conta.dataCriacao | date:'longDate'}}</td>
-            <i [ngClass]="['material-icons', 'clsImage']" (click)="deleteConta(conta.id)">
+            <i id="iconDeleteConta" [ngClass]="['material-icons', 'clsImage']" (click)="deleteConta(conta.id)">
                 delete
             </i>
-            <i [ngClass]="['material-icons', 'clsImage']" (click)="getValuesToEdit(conta)">
+            <i id="iconEditConta" [ngClass]="['material-icons', 'clsImage']" (click)="getValuesToEdit(conta)">
                 edit
             </i>
         </tr>
