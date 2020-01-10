@@ -24,6 +24,9 @@
                 edit
             </i>
         </tr>
+        <!-- <tr *ngIf="">
+            <td>{{message}}</td>
+        </tr> -->
     </table>
 </div>
 <br>
@@ -31,18 +34,18 @@
     <div style="display: flex; justify-content: space-between;">
         <br>
         <label style="align-self: center;">Descr: </label>
-        <input type="text" name="descricao" formControlName="descricao" />
+        <input id="inputDescricao" type="text" name="descricao" formControlName="descricao" />
         <br>
         <br>
         <label style="align-self: center;">Valor: </label>
-        <input type="number" name="valor" formControlName="valor" />
+        <input id="inputValor" type="number" name="valor" formControlName="valor" />
         <br>
         <br>
         <label style="align-self: center;">Data: </label>
-        <input type="date" name="dataCriacao" formControlName="dataCriacao" />
+        <input id="inputDataCriacao" type="date" name="dataCriacao" formControlName="dataCriacao" />
         <br>
         <br>
-        <button #btnRegistro type="submit" (click)="registerConta()">Registrar conta</button>
-        <button #btnAtualizar type="submit" (click)="editConta()">Atualizar conta</button>
+        <button id="btnRegistro" #btnRegistro type="submit" (click)="registerConta()">Registrar conta</button>
+        <button id="btnAtualizar" #btnAtualizar type="submit" (click)="editConta()">Atualizar conta</button>
     </div>
 </form>

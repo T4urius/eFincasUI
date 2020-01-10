@@ -21,6 +21,7 @@ export class ContaPageComponent implements OnInit {
   valor: string = '';
   dataCriacao: Date;
   toEdit: any;
+  message: any;
 
   constructor(private contaService: ContaService, private formBuilder: FormBuilder, private datePipe: DatePipe) { }
 
@@ -87,6 +88,9 @@ export class ContaPageComponent implements OnInit {
   loadAllContas() {
     this.contaService.getAllContas().subscribe(res => {
       this.allContas = res;
+      if (this.allContas == null) {
+        this.message = 'Não há contas cadastradas no momento';
+      }
     }, err => {
       console.log(err);
     });
