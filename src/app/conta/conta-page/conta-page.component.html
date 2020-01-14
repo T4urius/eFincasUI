@@ -1,4 +1,4 @@
-<h1>Teste Conta</h1>
+<h1 style="text-align: center;">Registro de Conta</h1>
 
 <div>
     <table style="width: 100%;">
@@ -24,9 +24,9 @@
                 edit
             </i>
         </tr>
-        <!-- <tr *ngIf="">
-            <td>{{message}}</td>
-        </tr> -->
+        <tr *ngIf="!contas">
+            <td style="text-align: center;">{{message}}</td>
+        </tr>
     </table>
 </div>
 <br>

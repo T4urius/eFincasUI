@@ -22,6 +22,7 @@ export class ContaPageComponent implements OnInit {
   dataCriacao: Date;
   toEdit: any;
   message: any;
+  contas: boolean = false;
 
   constructor(private contaService: ContaService, private formBuilder: FormBuilder, private datePipe: DatePipe) { }
 
@@ -88,7 +89,8 @@ export class ContaPageComponent implements OnInit {
   loadAllContas() {
     this.contaService.getAllContas().subscribe(res => {
       this.allContas = res;
-      if (this.allContas == null) {
+      if (this.allContas.length == 0) {
+        this.contas = true;
         this.message = 'Não há contas cadastradas no momento';
       }
     }, err => {

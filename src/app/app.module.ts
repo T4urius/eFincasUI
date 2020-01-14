@@ -10,12 +10,18 @@ import { registerLocaleData, DatePipe } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HistoricoPageComponent } from './historico/historico-page/historico-page.component';
+import { MenuPageComponent } from './menu/menu-page/menu-page.component';
+import { HistoricoPageModule } from './historico/historico-page/historico-page.module';
+import { MenuPageModule } from './menu/menu-page/menu-page.module';
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContaPageComponent
+    ContaPageComponent,
+    HistoricoPageComponent,
+    MenuPageComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -24,6 +30,8 @@ registerLocaleData(localePt);
     BrowserModule,
     AppRoutingModule,
     ContaPageModule,
+    HistoricoPageModule,
+    MenuPageModule,
     BrowserAnimationsModule,
   ],
   providers: [
