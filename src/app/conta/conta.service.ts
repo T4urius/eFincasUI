@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Conta } from './conta';
 import { Observable } from 'rxjs';
-import { disableDebugTools } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'

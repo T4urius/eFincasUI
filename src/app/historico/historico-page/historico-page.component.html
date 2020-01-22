@@ -1,1 +1,24 @@
-<p>historico-page works!</p>
+<h1 style="text-align: center;">Histórico de Contas</h1>
+
+<div>
+    <table style="width: 100%;">
+        <tr
+            style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid; border-radius: 10px;">
+            <td style="width: 33%; text-align: center;">Descrição </td>
+            <td style="width: 33%; text-align: center;">Tipo </td>
+            <td style="width: 33%; text-align: center;">Valor </td>
+            <td style="width: 33%; text-align: center;">Data </td>
+
+            <!-- <i #iconFilter [ngClass]="['material-icons', 'clsImage']" (click)="filterList()">filter_list</i> -->
+        </tr>
+        <br>
+        <tr *ngFor="let historico of listHistorico"
+            style="display: flex; justify-content: space-between; padding: 10px; border-top: 1px solid; border-bottom: 1px solid; border-radius: 10px;">
+            <td style="visibility: hidden;">{{historico.id}}</td>
+            <td style="width: 33%; text-align: center;">{{historico.descricao}}</td>
+            <td style="width: 33%; text-align: center;">{{historico.tipo}}</td>
+            <td style="width: 33%; text-align: center;">R$ {{historico.valor | number:'2.2'}}</td>
+            <td style="width: 33%; text-align: center;">{{historico.dataExclusao | date:'longDate'}}</td>
+        </tr>
+    </table>
+</div>

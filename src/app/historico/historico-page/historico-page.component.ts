@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoricoService } from '../historico.service';
+import { Historico } from '../historico';
 
 @Component({
   selector: 'app-historico-page',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoricoPageComponent implements OnInit {
 
-  constructor() { }
+  listHistorico: any;
 
-  ngOnInit() {
+  constructor(private historicoService: HistoricoService) {
+
   }
 
+  ngOnInit() {
+    this.getAllHistorico();
+  }
+
+  getAllHistorico() {
+    this.historicoService.getAllHistoricos()
+      .subscribe((result) => {
+        this.listHistorico = result;
+        console.log(this.listHistorico);
+      }, err => {
+        console.log(err);
+      })
+  }
 }

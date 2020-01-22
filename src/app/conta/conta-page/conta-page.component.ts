@@ -20,6 +20,7 @@ export class ContaPageComponent implements OnInit {
   descricao: string = '';
   valor: string = '';
   dataCriacao: Date;
+  tipo: string = '';
   toEdit: any;
   message: any;
   contas: boolean = false;
@@ -34,6 +35,7 @@ export class ContaPageComponent implements OnInit {
       descricao: ['', [Validators.required]],
       valor: ['', [Validators.required]],
       dataCriacao: ['', Validators.required],
+      tipo: ['', [Validators.required]],
       filter: []
     });
     this.loadAllContas();
@@ -52,17 +54,20 @@ export class ContaPageComponent implements OnInit {
     this.btnAtualizar.nativeElement.disabled = false;
     this.btnRegistro.nativeElement.disabled = true;
     let dtCria = this.datePipe.transform(contaEdit.dataCriacao, 'yyyy-MM-dd');
+    console.log(contaEdit);
 
     this.contaForm.setValue({
       id: contaEdit.id,
       descricao: contaEdit.descricao,
       valor: contaEdit.valor,
       dataCriacao: dtCria,
+      tipo: contaEdit.tipo,
       filter: null
     });
   }
 
   editConta() {
+
     this.btnAtualizar.nativeElement.disabled = true;
     this.btnRegistro.nativeElement.disabled = false;
     let editValues = this.contaForm.value;
@@ -100,6 +105,8 @@ export class ContaPageComponent implements OnInit {
 
   registerConta() {
     let conta = this.contaForm.value;
+    console.log(this.contaForm);
+    console.log(conta);
     this.contaService.registrarConta(conta).subscribe(e => {
       console.log(e);
       this.ngOnInit();

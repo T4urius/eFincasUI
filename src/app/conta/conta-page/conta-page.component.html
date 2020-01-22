@@ -5,6 +5,7 @@
         <tr
             style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid; border-radius: 10px;">
             <td style="width: 33%; text-align: center;">Descrição </td>
+            <td style="width: 33%; text-align: center;">Tipo </td>
             <td style="width: 33%; text-align: center;">Valor </td>
             <td style="width: 33%; text-align: center;">Data </td>
 
@@ -15,7 +16,8 @@
             style="display: flex; justify-content: space-between; padding: 10px; border-top: 1px solid; border-bottom: 1px solid; border-radius: 10px;">
             <td style="visibility: hidden;">{{conta.id}}</td>
             <td style="width: 33%; text-align: center;">{{conta.descricao}}</td>
-            <td style="width: 33%; text-align: center;"> {{conta.valor | number:'2.2'}}</td>
+            <td style="width: 33%; text-align: center;">{{conta.tipo}}</td>
+            <td style="width: 33%; text-align: center;">R$ {{conta.valor | number:'2.2'}}</td>
             <td style="width: 33%; text-align: center;">{{conta.dataCriacao | date:'longDate'}}</td>
             <i id="iconDeleteConta" [ngClass]="['material-icons', 'clsImage']" (click)="deleteConta(conta.id)">
                 delete
@@ -36,6 +38,12 @@
         <label style="align-self: center;">Descr: </label>
         <input id="inputDescricao" type="text" name="descricao" formControlName="descricao" />
         <br>
+        <label style="align-self: center;">Tipo: </label>
+        <select id="selectTipo" name="tipo" formControlName="tipo">
+            <option value="Salario">Salário</option>
+            <option value="Renda Extra">Renda Extra</option>
+            <option value="A Pagar">A pagar</option>
+        </select>
         <br>
         <label style="align-self: center;">Valor: </label>
         <input id="inputValor" type="number" name="valor" formControlName="valor" />
